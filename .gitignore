@@ -1,2 +1,3 @@
 # PREVENTS ACCIDENTAL SECRET DATA PUSH TO REPO
 praw.ini
+__pycache__/*
