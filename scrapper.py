@@ -1,5 +1,9 @@
 import praw
 from datetime import datetime
+from pathlib import Path
+
+if not Path('./praw.ini').is_file():
+    exec(open("setup.py").read())
 
 cleaned_comment = []
 

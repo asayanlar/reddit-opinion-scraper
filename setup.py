@@ -1,0 +1,6 @@
+f = open("praw.ini", "a")
+f.write("[DEFAULT]\n")
+f.write("client_id=\n")
+f.write("client_secret=\n")
+f.write("user_agent=\n")
+f.close()
