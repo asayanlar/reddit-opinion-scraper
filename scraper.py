@@ -19,8 +19,9 @@ def grab_submission(reddit):
 
 def grab_all_replies(replies):
     for reply in replies:
-        print("\nReddit User -> " + "Upvotes: " + str(reply.score) + ", Date: " + str(datetime.utcfromtimestamp(reply.created_utc).strftime('%m-%Y')))
-        print(str(reply.body))
+        if (not (reply.is_submitter) and not(reply.score < 3)):
+            print("\nReddit User -> " + "Upvotes: " + str(reply.score) + ", Date: " + str(datetime.utcfromtimestamp(reply.created_utc).strftime('%m-%Y')))
+            print(str(reply.body))
 
 def grab_top_level_comments(top_level_comment):
 
