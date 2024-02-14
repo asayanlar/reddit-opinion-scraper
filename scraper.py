@@ -18,8 +18,8 @@ def grab_submission(reddit):
     return submission
 
 def clean_comment(comment):
-    cleaned_comment = str(comment)
-    cleaned_comment = cleaned_comment[1:-1]
+    cleaned_comment = str('"' + comment + '"')
+    cleaned_comment = cleaned_comment
     cleaned_comment = cleaned_comment.replace('\\u200b', '').replace("\n", "")
     return cleaned_comment
 
