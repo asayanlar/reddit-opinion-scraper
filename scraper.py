@@ -2,10 +2,6 @@ import praw
 from datetime import datetime
 from pathlib import Path
 
-def setup_praw():
-    if not Path('./praw.ini').is_file():
-        exec(open("setup.py").read())
-
 def grab_url():
     return input("Enter Reddit Post's URL: ")
 
