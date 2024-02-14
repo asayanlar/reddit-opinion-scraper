@@ -17,24 +17,25 @@ def grab_submission(reddit):
     submission = reddit.submission(url=grab_url())
     return submission
 
+def clean_comment(comment):
+    cleaned_comment = str(comment)
+    cleaned_comment = cleaned_comment[1:-1]
+    cleaned_comment = cleaned_comment.replace('\\u200b', '').replace("\n", "")
+    return cleaned_comment
+
 def grab_all_replies(replies):
+    
     for reply in replies:
         if (not (reply.is_submitter) and not(reply.score < 3)):
             print("\nReddit User -> " + "Upvotes: " + str(reply.score) + ", Date: " + str(datetime.utcfromtimestamp(reply.created_utc).strftime('%m-%Y')))
-            print(str(reply.body))
+            print(clean_comment(reply.body))
 
 def grab_top_level_comments(top_level_comment):
 
-    cleaned_comment = []
-
     if (not (top_level_comment.is_submitter) and not(top_level_comment.score < 3)):
-        
-        cleaned_comment.append(top_level_comment.body.replace("\n", "")) 
-
         print("Reddit User -> " + "Upvotes: " + str(top_level_comment.score) + ", Date: " + str(datetime.utcfromtimestamp(top_level_comment.created_utc).strftime('%m-%Y')))
-        print(str(cleaned_comment)[1:-1])
+        print(clean_comment(top_level_comment.body))
 
-        cleaned_comment = []
     else:
         print("Skipped comment...")
 
